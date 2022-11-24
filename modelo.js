@@ -1,5 +1,11 @@
 const bd = require('./bd/bd_utils.js');
 
+// listar_perguntas retorna um array de objetos com os seguintes campos:
+// { id_pergunta: int
+//   texto: int
+//   id_usuario: int
+//   num_respostas: int 
+// }
 function listar_perguntas() {
   const perguntas = bd.queryAll('select * from perguntas', []);
   perguntas.forEach(pergunta => pergunta['num_respostas'] = get_num_respostas(pergunta['id_pergunta']));
